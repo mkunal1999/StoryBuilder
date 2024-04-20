@@ -1,0 +1,18 @@
+<mat-toolbar color="primary" class="header">
+    <!-- Project Name and Star -->
+    <div class="project-name">
+        <span>Virtusa StoryBuilder</span>
+        <span class="star"> &nbsp; &#10022; &#x2726; &#10022;</span>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <!-- <div class="nav-buttons">
+        <button mat-button routerLink="/home">Home</button>
+        <button mat-button routerLink="/story_builder" style="color:yellow;">Story Gen</button>
+        <button mat-raised-button color="accent" (click)="navigateTo('login')">Login/Signup</button> --
+    </div> -->
+    <div class="nav-buttons">
+        <button mat-button routerLink="/home" [ngClass]="active_home" (click)="isActive('/home')" style="letter-spacing: 0px;">Home</button>
+        <button mat-button routerLink="/story_builder" [ngClass]="{'active': {active_story}}" (click)="isActive('/story_builder')" style="letter-spacing: 0px;">Story Gen</button>
+    </div>
+</mat-toolbar>

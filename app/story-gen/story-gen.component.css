@@ -1,0 +1,208 @@
+/* Header Styling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+html,body{
+  /* height: 100%; */
+  overflow: hidden;
+}
+
+.header {
+  background-color: #3f51b5;/* Dark background color */
+  color: white;
+  padding: 10px;
+  position: fixed; /* Fix the header at the top */
+  top: 0;
+  width: 100%; /* Full width of the viewport */
+  z-index: 1000; /* Keep above other content */
+  display: flex;
+  justify-content: space-between; /* Space out the elements */
+  align-items: center; /* Center elements vertically */
+}
+
+/* Project name styling */
+.project-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  /* font-family: 'Poppins', sans-serif; */
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2em;
+  color: white; /* White text color */
+}
+
+/* Styling for the star */
+.star {
+  font-size: 1em;
+  display: inline-block;
+  animation: blinkColors 2s infinite; /* Color blink animation */
+}
+
+@keyframes blinkColors {
+  0% {
+      color: white;
+  }
+  25% {
+      color: #bb4bd7; /* Violet */
+  }
+  50% {
+      color: #1996c8; /* Sky blue */
+  }
+  75% {
+      color: #53ff8c; /* Light green */
+  }
+  100% {
+      color: white;
+  }
+}
+
+/* Navigation buttons */
+.nav-buttons button {
+  margin: 0 10px;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px; /* Button text color white */
+}
+
+/* Main container */
+.container {
+  display: flex;
+  margin-top: 64px; /* Offset content from header */
+  /* height: calc(100vh - 64px); Full height minus header */
+  height: 100vh;
+  padding: 20px;
+  overflow: hidden; 
+  /* Hide overflow for main container */
+}
+
+/* Upload section */
+.upload-section {
+  width: 30%; /* 30% width */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  margin-right: 20px;
+  height: 70vh /*calc(100vh - 64px); Full height minus header */
+}
+
+::ng-deep .mat-tab-label {
+  position: sticky;
+  top: 0;
+  background-color: #fff; /* Set your desired background color */
+  z-index: 1; /* Ensure the header is above the content */
+} 
+
+/* Upload box */
+.upload-box {
+  width: 80%; /* Width of the box */
+  height: 150px; /* Height of the box */
+  border: 2px dashed #cccccc; /* Dashed border */
+  border-radius: 15px; /* Rounded corners */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+  margin-bottom: 20px; /* Space below the box */
+}
+
+/* Hover effect on upload box */
+.upload-box:hover {
+  border-color: #6200ea; /* Border color on hover */
+}
+
+/* Generate story button */
+button[mat-raised-button] {
+  margin: 10px 10px;
+  color: white; /* Set button text color to white */
+}
+
+/* Tabs section */
+.tabs-section {
+  width: 70%; /* 70% width */
+  height: 78vh;/*calc(100vh - 64px); /* Full height minus header */
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: white;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  padding: 20px;
+}
+
+/* Styling for expansion panels in User Stories */
+mat-expansion-panel {
+  margin-bottom: 10px; /* Spacing between panels */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+mat-expansion-panel-header {
+  background-color: #f5f5f5; /* Light gray background */
+  color: #3f51b5; /* Dark blue color */
+  font-weight: bold; /* Bold text */
+}
+
+/* Style for each key in the JSON object */
+mat-expansion-panel-content div {
+  font-weight: bold; /* Key names bold */
+  color: #3f51b5; /* Dark blue color */
+}
+
+mat-expansion-panel-content span {
+  color: black; /* Values in normal color */
+}
+
+/* Custom style for the snack bar */
+.custom-snackbar {
+  font-size: 1.2rem; /* Adjust font size as needed */
+  padding: 10px 20px; /* Adjust padding for size */
+}
+
+/* Bottom-to-top animation */
+@keyframes slideInFromBottom {
+  from {
+      transform: translateY(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.custom-snackbar-animate {
+  animation: slideInFromBottom 0.3s ease-in-out; /* Adjust animation speed */
+}
+
+/* loading-spinner.component.css */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of viewport */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+
+.loading-container {
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* Transparent background */
+}
+
+.loading-gif {
+  width: 100px; /* Set the size of the loading GIF */
+  height: 100px;
+}
+
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: cornflowerblue;
+}
+
+.downloadBtn{
+    border-radius: 10px;
+}

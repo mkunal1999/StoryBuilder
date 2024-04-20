@@ -1,0 +1,110 @@
+<body>
+<app-nav-bar></app-nav-bar>
+
+<div class="container">
+    <!-- Left side: Upload section -->
+    <div class="upload-section">
+        <h2>Upload Section</h2>
+        <!-- Upload box for file selection -->
+        <div class="upload-box" (click)="triggerFileInput()">
+            <p style="display: flex;flex-direction: column;align-items: center; justify-content: center; text-align: center; padding: 0 10px;">Drag and drop a file here or click to select a file</p>
+            <input type="file" id="fileInput" style="display: none;" (change)="onFileSelected($event)" accept=".pdf">
+        </div>
+        <!-- Display the selected file name -->
+        <div *ngIf="selectedFileName" class="selected-file-name">
+            <strong>Selected File:</strong> {{ selectedFileName }}
+        </div>
+        <!-- Button to submit the file -->
+        <button mat-raised-button color="primary" (click)="onSubmit()">Generate Story</button>
+
+        <div *ngIf="isStoryLoaded">
+            <div class="example-button-container" Style="display: flex; flex-direction: row; margin-top: 20%;">
+                <mat-form-field class="example-full-width" style="margin: 0% 2%; padding-right: 10px;">
+                    <mat-label>Enter the file name</mat-label>
+                    <input [(ngModel)]="filename" matInput placeholder="User Story">
+                </mat-form-field>
+                <button mat-fab class="downloadBtn" color="bl" style="color: white; background-color: blueviolet;" (click)="downloadCsv()" aria-label="Example icon button with a bookmark icon">
+                  <mat-icon>download</mat-icon>
+                </button>
+            </div>
+        </div>
+        <!-- <button (click)="downloadCsv()">Download CSV</button> -->
+    </div>
+
+    <!-- Right side: Tabs section -->
+    <div class="tabs-section">
+        <mat-tab-group>
+            <!-- Functionality Tab -->
+<mat-tab label="Functionality" class=".mat-tab-label ">
+    <div class="tab-content">
+        <div *ngIf="isFuncLoading && isClicked" >
+            <!-- You can replace this with your preferred loading animation or text -->
+            <div class="loading-container" style="margin: 25% 50%;">
+                <img src="assets/settings.gif" alt="Loading..." class="loading-gif">
+                <!-- <h5 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;display: flex;flex-direction: column;align-items: center;justify-content: center; text-align: center;">Functionalaity will be display here...</h5> -->
+            </div>            
+        </div>
+        <div *ngIf="!isFuncLoading && isClicked">
+            <div *ngFor="let obj of Functionality">
+                <div *ngFor="let key of getKeys(obj)">
+                        <!-- Header of the expansion panel (headline) -->
+                            <mat-panel-title>
+                                <h3 style="color: darkblue; font-weight: bold;"> {{key}}</h3>
+                            </mat-panel-title>
+                        <!-- Inside content of the expansion panel -->
+                        <div>
+                            <div *ngFor="let item of getObjectValues(obj[key]); let i = index">
+                                <ng-container *ngIf="i === 0"> 
+                                    <p>
+                                        <span style="color: rgb(223, 144, 41); font-weight: bold;">&#10022; {{ item[0] }}:</span> {{ item[1] }}
+                                    </p>
+                                </ng-container>
+                            </div>
+                            
+                        </div>     
+                                
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-tab>
+
+            <!-- User Stories Tab with collapsible sections -->
+            <mat-tab label="User Stories" class=".mat-tab-label">
+                <div class="tab-content">
+                    <div *ngIf="isStoryLoading && isClicked" >
+                        <!-- You can replace this with your preferred loading animation or text -->
+                        <div class="loading-container" style="margin: 25% 50%;">
+                            <img src="assets/Rubics.gif" alt="Loading..." class="loading-gif">
+                            <!-- <h5 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;display: flex;flex-direction: column;align-items: center;justify-content: center; text-align: center;">Functionalaity will be display here...</h5> -->
+                        </div>            
+                    </div>
+                    <div *ngIf="!isStoryLoading && isClicked" >
+                        <div *ngFor="let obj of UserStories">
+                            <!-- <div *ngFor="let key of getKeys(obj)"> -->
+                            <div *ngFor="let key of getKeys(obj)">
+                                <mat-expansion-panel>
+                                    <!-- Header of the expansion panel (headline) -->
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <h3 style="color: darkblue; font-weight: bold; margin-top: 17px;">{{ key }}</h3>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <!-- Inside content of the expansion panel -->
+                                    <div>
+                                        <div *ngFor="let item of getObjectValues(obj[key])">
+                                            <p>
+                                                <span style="color: rgb(223, 144, 41); font-weight: bold;">&#10022; {{ item[0] }}:</span> {{ item[1] }}
+                                            </p>
+                                        </div>
+                                    </div>                           
+                                </mat-expansion-panel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
+</body>
